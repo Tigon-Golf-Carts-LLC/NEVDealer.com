@@ -329,3 +329,99 @@ footer {
         font-size: 2rem;
     }
 }
+
+/* ---------- TIGON lead forms, modal and call-to-action buttons (js/tigon-lead.js) ---------- */
+.tigon-lead-form .tgn-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
+.tigon-lead-form .tgn-field { flex: 1 1 100%; display: flex; flex-direction: column; gap: 0.35rem; min-width: 0; }
+.tigon-lead-form .tgn-half { flex: 1 1 240px; }
+.tigon-lead-form label { font-weight: 500; }
+.tigon-lead-form .form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    background-color: var(--dark-surface);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+}
+.tigon-lead-form textarea.form-control { min-height: 120px; resize: vertical; }
+.tigon-lead-form input[type=file].form-control { padding: 0.5rem; }
+.tigon-lead-form .form-control[readonly] { opacity: 0.8; }
+.tigon-lead-form .form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(255, 53, 3, 0.2);
+}
+.tigon-lead-form .form-control[aria-invalid="true"] { border-color: #ff6b6b; }
+.tigon-lead-form .tgn-err { color: #ff8a80; font-size: 0.875rem; min-height: 0; }
+.tigon-lead-form .tgn-err:empty { display: none; }
+.tigon-lead-form .tgn-hint { color: var(--text-muted); font-size: 0.875rem; margin: 0.75rem 0 0; }
+.tigon-lead-form .tgn-submit {
+    margin-top: 1.25rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.tigon-lead-form .tgn-submit:hover { background-color: var(--primary-dark); }
+.tigon-lead-form .tgn-submit[disabled] { opacity: 0.6; cursor: wait; }
+.tigon-lead-form .tigon-msg { margin: 1rem 0 0; font-weight: 600; }
+.tigon-lead-form .tigon-msg:empty { display: none; }
+.tigon-lead-form .tgn-ok { color: #81c784; }
+.tigon-lead-form .tgn-bad { color: #ff8a80; }
+/* Spam trap: moved off-screen (not display:none) */
+.tigon-lead-form .tgn-hp { position: absolute !important; left: -9999px !important; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
+/* Modal */
+html.tgn-lock, html.tgn-lock body { overflow: hidden; }
+.tgn-modal[hidden] { display: none; }
+.tgn-modal { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: flex-start; justify-content: center; padding: 2rem 1rem; overflow-y: auto; }
+.tgn-backdrop { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75); }
+.tgn-dialog {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    background-color: var(--dark-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px var(--shadow-color);
+}
+.tgn-dialog h2 { margin-top: 0; padding-right: 2rem; }
+.tgn-dialog .tgn-sub { color: var(--text-secondary); }
+.tgn-close {
+    position: absolute; top: 0.75rem; right: 0.75rem;
+    background: none; border: none; color: var(--text-primary);
+    font-size: 2rem; line-height: 1; cursor: pointer; padding: 0.25rem 0.5rem;
+}
+.tgn-close:hover { color: var(--primary-color); }
+
+/* Call Now / Get a Quote buttons */
+.tgn-cta { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.tgn-cta .btn, .tgn-quote { border: none; font-size: 1rem; font-family: inherit; cursor: pointer; }
+.tgn-cta .tgn-quote { background-color: transparent; color: var(--primary-light); box-shadow: inset 0 0 0 2px var(--primary-color); }
+.tgn-cta .tgn-quote:hover { background-color: var(--primary-color); color: #fff; }
+.tgn-inline { margin-top: 1rem; }
+.tgn-float {
+    position: fixed; right: 1rem; bottom: 1rem; z-index: 900;
+    flex-direction: column; align-items: stretch;
+}
+.tgn-float .btn { box-shadow: 0 4px 12px var(--shadow-color); }
+.tgn-float .tgn-quote { background-color: var(--dark-surface); }
+@media (max-width: 768px) {
+    .tgn-float {
+        left: 0; right: 0; bottom: 0; gap: 0;
+        flex-direction: row; flex-wrap: nowrap;
+        background: var(--dark-surface); border-top: 1px solid var(--border-color);
+    }
+    .tgn-float .tgn-num { display: none; }
+    .tgn-float .btn { flex: 1 1 50%; border-radius: 0; box-shadow: none; padding: 0.9rem 0.5rem; }
+    footer { padding-bottom: 5rem; }
+    .tgn-dialog { padding: 1.5rem 1rem; }
+}
