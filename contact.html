@@ -16,53 +16,6 @@
             margin-bottom: 2rem;
         }
         
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 0.75rem;
-            border-radius: 4px;
-            border: 1px solid var(--border-color);
-            background-color: var(--dark-surface);
-            color: var(--text-primary);
-            font-family: inherit;
-            font-size: 1rem;
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 2px rgba(255, 53, 3, 0.2);
-        }
-        
-        .submit-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        
-        .submit-btn:hover {
-            background-color: var(--primary-dark);
-        }
-        
         .contact-info {
             background-color: var(--dark-card);
             padding: 2rem;
@@ -108,53 +61,27 @@
         
         <div class="contact-form">
             <h2>Send Us a Message</h2>
-            <p>Fill out the form below and our Neighborhood Electric Vehicle experts will get back to you as soon as possible.</p>
-            
-            <form id="contactForm" action="javascript:void(0);" onsubmit="submitForm()">
-                <div class="form-group">
-                    <label for="firstName">First Name*</label>
-                    <input type="text" id="firstName" name="firstName" class="form-control" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="lastName">Last Name*</label>
-                    <input type="text" id="lastName" name="lastName" class="form-control" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email Address*</label>
-                    <input type="email" id="email" name="email" class="form-control" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="phone">Phone Number*</label>
-                    <input type="tel" id="phone" name="phone" class="form-control" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Message*</label>
-                    <textarea id="message" name="message" class="form-control" required></textarea>
-                </div>
-                
-                <button type="submit" class="submit-btn">Send Message</button>
-                
-                <div id="formStatus" style="margin-top: 1rem;"></div>
-            </form>
+            <p>Fill out the form below and our Neighborhood Electric Vehicle experts will get back to you as soon as possible. Prefer to talk? Call us now.</p>
+            <p><a class="btn" href="tel:+18448446638">&#9742; Call Now 1-844-844-6638</a></p>
+
+            <!-- TIGON lead form ("Contact form") is rendered here by js/tigon-lead.js -->
+            <div data-tigon-form-mount></div>
+            <noscript><p>Please enable JavaScript to use this form, or call us at <a href="tel:+18448446638">1-844-844-6638</a>.</p></noscript>
         </div>
-        
+
         <div class="contact-info">
             <h2>Other Ways to Reach Our NEV Dealership Network</h2>
             
             <div>
                 <h3>General Inquiries</h3>
                 <p>Email: info@nevdealer.com</p>
-                <p>Phone: 1-844-844-6638</p>
+                <p>Phone: <a href="tel:+18448446638">1-844-844-6638</a></p>
             </div>
             
             <div style="margin-top: 2rem;">
                 <h3>Dealer Support</h3>
                 <p>Email: dealers@nevdealer.com</p>
-                <p>Phone: 1-844-844-6638</p>
+                <p>Phone: <a href="tel:+18448446638">1-844-844-6638</a></p>
             </div>
         </div>
     </main>
@@ -175,41 +102,7 @@
                 nav.classList.toggle('active');
             });
         });
-        
-        function submitForm() {
-            // Get form values
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const message = document.getElementById('message').value;
-            
-            // Display sending message
-            const formStatus = document.getElementById('formStatus');
-            formStatus.innerHTML = '<p style="color: var(--primary-light);">Sending your message...</p>';
-            
-            // In a real implementation, this would send data to a server
-            // For this static demo, we'll simulate a successful submission
-            setTimeout(() => {
-                // Clear form
-                document.getElementById('contactForm').reset();
-                
-                // Show success message
-                formStatus.innerHTML = '<p style="color: var(--primary-light);">Thank you! Your message has been sent to contact@tigongolfcarts.com with the subject: [NEVDEALER.COM WEBSITE]</p>';
-                
-                // Log the submission (in a real implementation, this would be sent to the server)
-                console.log({
-                    to: 'contact@tigongolfcarts.com',
-                    subject: '[NEVDEALER.COM WEBSITE]',
-                    body: `
-                        Name: ${firstName} ${lastName}
-                        Email: ${email}
-                        Phone: ${phone}
-                        Message: ${message}
-                    `
-                });
-            }, 1500);
-        }
     </script>
+    <script src="js/tigon-lead.js" defer></script>
 </body>
 </html>
